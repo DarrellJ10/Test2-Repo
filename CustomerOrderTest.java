@@ -49,6 +49,16 @@ public class CustomerOrderTest {
 
 	// ToDo: Test order status updates
 	// Set the status of the order and verify that the status is updated correctly.
+    @Test
+    public void testOrderStatusUpdate() {
+        // Add an item to the order
+        order.addItem("Cheese Pizza", 10.00);
 
+        // Update the status of the order
+        order.setStatus("Ready");
+
+        // Verify the updated status
+        assertEquals("Ready", order.getStatus());
+    }
 
 }
