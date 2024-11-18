@@ -22,14 +22,19 @@ public class CustomerOrderTest {
     }
     
     // ToDo: Remove this test case before submission
-    @Test
-	public void test() {
-		fail("Not yet implemented");
+   
 	}
 	
 	// ToDo: Test placing a valid order
 	// Add items to the order, verify the number of items, and check if the total cost is calculated correctly.
+@Test
+public void testPlaceOrder() {
+    order.addItem("Pepperoni Pizza", 12.50); // Add 1 Pepperoni Pizza
+    order.addItem("Garlic Bread", 5.00);    // Add 1 Garlic Bread
 
+    assertEquals(2, order.getItems().size());
+    assertEquals(17.50, order.getTotalAmount(), 0.01);
+}
 
 	// ToDo: Test paying for the order
 	// Add an item to the order, pay using a method, and verify that the order is marked as paid.
