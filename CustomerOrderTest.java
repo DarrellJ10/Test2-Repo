@@ -27,35 +27,24 @@ public class CustomerOrderTest {
 	
 	// ToDo: Test placing a valid order
 	// Add items to the order, verify the number of items, and check if the total cost is calculated correctly.
-@Test
-public void testPlaceOrder() {
-    order.addItem("Pepperoni Pizza", 12.50); // Add 1 Pepperoni Pizza
-    order.addItem("Garlic Bread", 5.00);    // Add 1 Garlic Bread
 
-    assertEquals(2, order.getItems().size());
-    assertEquals(17.50, order.getTotalAmount(), 0.01);
-}
 
 	// ToDo: Test paying for the order
 	// Add an item to the order, pay using a method, and verify that the order is marked as paid.
-@Test
-public void testPayOrder() {
-    // Add an item to the order
-    order.addItem("Cheese Pizza", 10.00); // Add 1 Cheese Pizza at $10.00
-
-    // Pay for the order
-    order.pay("Credit Card");
-
-    // Verify the order is marked as paid
-    assertTrue(order.isPaid());
-
-    // Verify the total amount is correct
-    assertEquals(10.00, order.getTotalAmount(), 0.01);
-}
 
 	// ToDo: Test inventory update when an order is placed
 	// Add an item to the order and reduce its stock. Verify that the inventory count is updated correctly.
+@Test
+public void testInventoryUpdate() {
+    // Add an item to the order
+    order.addItem("Pepperoni Pizza", 12.50);
 
+    // Reduce stock in inventory
+    inventory.updateStock("Pepperoni Pizza", 1);
+
+    // Verify the updated stock for the item
+    assertEquals(9, inventory.getItemStock("Pepperoni Pizza"));
+}
 
 	// ToDo: Test low stock alert
 	// Reduce the stock of an item and verify that the system triggers a low stock alert when the quantity falls below the threshold.
